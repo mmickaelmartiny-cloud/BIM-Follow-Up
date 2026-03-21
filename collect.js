@@ -78,16 +78,55 @@ async function collect() {
     const topVaultId = Object.entries(tvlMap).sort((a, b) => b[1] - a[1])[0];
     const topVaultInfo = vaults.find(v => v.id === topVaultId?.[0]);
 
+    // Annualized Revenue
+    let totalAnnualRevenue = 0;
+    const revenueByChain = {};
+    const revenueByPlatform = {};
+    for (const v of vaults) {
+        const vTvl = tvlMap[v.id] || 0;
+        const vApy = apy[v.id]?.totalApy;
+        const fee = apy[v.id]?.beefyPerformanceFee || 0;
+        if (vTvl > 0 && typeof vApy === 'number' && isFinite(vApy) && vApy > 0 && fee > 0) {
+            const rev = vTvl * vApy * fee / (1 - fee);
+            totalAnnualRevenue += rev;
+            const chain = v.chain || v.network || 'unknown';
+            revenueByChain[chain] = (revenueByChain[chain] || 0) + rev;
+            revenueByPlatform[v.platformId] = (revenueByPlatform[v.platformId] || 0) + rev;
+        }
+    }
+
+    // Users par chain/platform
+    const usersByChain = {};
+    const usersByPlatform = {};
+    if (investors?.items) {
+        for (const item of investors.items) {
+            const vault = vaults.find(v => v.id === item.beefy_id);
+            if (vault && item.investor_counts?.[0]) {
+                const chain = vault.chain || vault.network || 'unknown';
+                usersByChain[chain] = (usersByChain[chain] || 0) + item.investor_counts[0];
+                usersByPlatform[vault.platformId] = (usersByPlatform[vault.platformId] || 0) + item.investor_counts[0];
+            }
+        }
+    }
+
     // TVL par vault (snapshot complet)
-    const vaultDetails = vaults.map(v => ({
+    const vaultDetails = vaults.map(v => {
+        const vTvl = tvlMap[v.id] || 0;
+        const vApy = apy[v.id]?.totalApy;
+        const fee = apy[v.id]?.beefyPerformanceFee || 0;
+        const validApy = typeof vApy === 'number' && isFinite(vApy) && vApy > 0;
+        const annualRevenue = (vTvl > 0 && validApy && fee > 0) ? vTvl * vApy * fee / (1 - fee) : 0;
+        return {
         id: v.id,
         name: v.name,
         chain: v.chain || v.network,
         token: v.token,
-        tvl: tvlMap[v.id] || 0,
-        apy: apy[v.id]?.totalApy || 0,
+        platform: v.platformId,
+        tvl: vTvl,
+        apy: validApy ? vApy : 0,
+        annualRevenue,
         status: v.status
-    })).filter(v => v.tvl > 0 || v.apy > 0);
+    }; }).filter(v => v.tvl > 0 || v.apy > 0);
 
     const entry = {
         date: new Date().toISOString().split('T')[0],
@@ -99,6 +138,7 @@ async function collect() {
             totalInvestors,
             avgAPY,
             maxAPY,
+            totalAnnualRevenue,
             topVault: topVaultInfo ? {
                 id: topVaultInfo.id,
                 name: topVaultInfo.name,
@@ -107,6 +147,10 @@ async function collect() {
             } : null
         },
         tvlByChain,
+        revenueByChain,
+        revenueByPlatform,
+        usersByChain,
+        usersByPlatform,
         vaults: vaultDetails
     };
 

@@ -22,16 +22,13 @@
             --accent-red: #ef4444;
             --accent-cyan: #06b6d4;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
         }
-
         .header {
             background: linear-gradient(135deg, #111827 0%, #1a1f3a 100%);
             border-bottom: 1px solid var(--border);
@@ -40,301 +37,151 @@
             align-items: center;
             justify-content: space-between;
         }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
+        .header-left { display: flex; align-items: center; gap: 1rem; }
         .logo {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem;
         }
-
-        .header h1 {
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .header h1 span {
-            color: var(--accent-blue);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .last-update {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
+        .header h1 { font-size: 1.4rem; font-weight: 700; }
+        .header h1 span { color: var(--accent-blue); }
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        .last-update { color: var(--text-muted); font-size: 0.8rem; }
         .refresh-btn {
-            background: var(--accent-blue);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: opacity 0.2s;
+            background: var(--accent-blue); color: white; border: none;
+            padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;
+            font-size: 0.85rem; font-weight: 500; transition: opacity 0.2s;
         }
-
         .refresh-btn:hover { opacity: 0.85; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem;
+        .section-title {
+            font-size: 1.2rem; font-weight: 700; margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
         }
+        .section-title:first-child { margin-top: 0; }
 
         /* KPI Cards */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem; margin-bottom: 1.5rem;
         }
-
         .kpi-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-            transition: background 0.2s;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.25rem; transition: background 0.2s;
         }
-
         .kpi-card:hover { background: var(--bg-card-hover); }
-
         .kpi-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;
         }
-
-        .kpi-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .kpi-sub {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.35rem;
-        }
-
+        .kpi-value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+        .kpi-sub { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.35rem; }
         .kpi-change {
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            margin-top: 0.35rem;
-            font-weight: 600;
+            display: inline-block; font-size: 0.72rem; padding: 0.15rem 0.5rem;
+            border-radius: 4px; margin-top: 0.35rem; font-weight: 600;
+        }
+        .kpi-change.positive { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+        .kpi-change.negative { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+        /* Tags */
+        .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .tag {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.4rem 0.75rem; border-radius: 8px;
+            font-size: 0.8rem; font-weight: 600;
+            background: var(--bg-card); border: 1px solid var(--border);
+        }
+        .tag-dot {
+            width: 8px; height: 8px; border-radius: 50%; display: inline-block;
         }
 
-        .kpi-change.positive {
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--accent-green);
-        }
-
-        .kpi-change.negative {
-            background: rgba(239, 68, 68, 0.15);
-            color: var(--accent-red);
-        }
-
-        /* Charts Section */
+        /* Charts */
         .charts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1rem; margin-bottom: 1.5rem;
         }
-
         .chart-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.25rem;
         }
-
-        .chart-card.full-width {
-            grid-column: 1 / -1;
-        }
-
+        .chart-card.full-width { grid-column: 1 / -1; }
         .chart-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+            font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem;
         }
-
-        .chart-container {
-            position: relative;
-            height: 300px;
+        .chart-subtitle {
+            font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;
         }
+        .chart-container { position: relative; height: 300px; }
 
-        /* Vaults Table */
+        /* Table */
         .table-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
-            overflow-x: auto;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.25rem; overflow-x: auto;
         }
-
         .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;
         }
-
-        .table-title {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 0.5rem;
-        }
-
+        .table-title { font-size: 1rem; font-weight: 600; }
+        .filter-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .filter-btn {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.2s;
+            background: transparent; border: 1px solid var(--border);
+            color: var(--text-secondary); padding: 0.35rem 0.75rem;
+            border-radius: 6px; cursor: pointer; font-size: 0.8rem; transition: all 0.2s;
         }
-
         .filter-btn.active, .filter-btn:hover {
-            background: var(--accent-blue);
-            color: white;
-            border-color: var(--accent-blue);
+            background: var(--accent-blue); color: white; border-color: var(--accent-blue);
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
+        table { width: 100%; border-collapse: collapse; }
         th {
-            text-align: left;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border);
-            cursor: pointer;
-            user-select: none;
-            white-space: nowrap;
+            text-align: left; font-size: 0.72rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 0.75rem 0.75rem; border-bottom: 1px solid var(--border);
+            cursor: pointer; user-select: none; white-space: nowrap;
         }
-
         th:hover { color: var(--text-secondary); }
-
+        th.sorted { color: var(--accent-blue); }
         td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
-            font-size: 0.9rem;
-            white-space: nowrap;
+            padding: 0.65rem 0.75rem;
+            border-bottom: 1px solid rgba(30,41,59,0.5);
+            font-size: 0.85rem; white-space: nowrap;
         }
-
-        tr:hover td { background: rgba(59, 130, 246, 0.04); }
-
+        tr:hover td { background: rgba(59,130,246,0.04); }
         .chain-badge {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            display: inline-block; padding: 0.2rem 0.5rem;
+            border-radius: 4px; font-size: 0.72rem; font-weight: 600;
         }
-
-        .chain-polygon { background: rgba(130, 71, 229, 0.2); color: #a78bfa; }
-        .chain-base { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        .chain-optimism { background: rgba(239, 68, 68, 0.2); color: #f87171; }
-        .chain-gnosis { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-        .chain-ethereum { background: rgba(148, 163, 184, 0.2); color: #94a3b8; }
-        .chain-default { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-
-        .status-active {
-            color: var(--accent-green);
-            font-weight: 600;
-        }
-
-        .status-paused {
-            color: var(--accent-orange);
-            font-weight: 600;
-        }
-
-        .apy-value {
-            color: var(--accent-green);
-            font-weight: 600;
-        }
-
-        .risk-tag {
-            display: inline-block;
-            padding: 0.1rem 0.35rem;
-            border-radius: 3px;
-            font-size: 0.65rem;
-            margin-right: 0.2rem;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-blue);
-        }
+        .chain-polygon { background: rgba(130,71,229,0.2); color: #a78bfa; }
+        .chain-base { background: rgba(59,130,246,0.2); color: #60a5fa; }
+        .chain-optimism { background: rgba(239,68,68,0.2); color: #f87171; }
+        .chain-gnosis { background: rgba(16,185,129,0.2); color: #34d399; }
+        .chain-ethereum { background: rgba(148,163,184,0.2); color: #94a3b8; }
+        .chain-default { background: rgba(245,158,11,0.2); color: #fbbf24; }
+        .status-active { color: var(--accent-green); font-weight: 600; }
+        .status-paused { color: var(--accent-orange); font-weight: 600; }
+        .apy-value { color: var(--accent-green); font-weight: 600; }
+        .revenue-value { color: var(--accent-cyan); font-weight: 600; }
 
         /* Loading */
         .loading-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            transition: opacity 0.3s;
+            position: fixed; inset: 0; background: var(--bg-primary);
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; z-index: 100; transition: opacity 0.3s;
         }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent-blue);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            width: 40px; height: 40px;
+            border: 3px solid var(--border); border-top-color: var(--accent-blue);
+            border-radius: 50%; animation: spin 0.8s linear infinite;
         }
-
         @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem; }
 
-        .loading-text {
-            margin-top: 1rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .charts-grid { grid-template-columns: 1fr; }
             .header { flex-direction: column; gap: 1rem; align-items: flex-start; }
@@ -361,54 +208,96 @@
     </header>
 
     <div class="container">
-        <!-- KPI Cards -->
+        <!-- Overview KPIs -->
         <div class="kpi-grid" id="kpiGrid"></div>
 
-        <!-- Charts -->
+        <!-- Supported Chains & Platforms -->
+        <div id="supportedSection"></div>
+
+        <!-- TVL Section -->
+        <div class="section-title">TVL</div>
         <div class="charts-grid">
             <div class="chart-card full-width">
                 <div class="chart-title">TVL par Chain (historique 1 an)</div>
-                <div class="chart-container">
-                    <canvas id="tvlTimelineChart"></canvas>
-                </div>
+                <div class="chart-subtitle">Evolution de la valeur totale verrouillee par blockchain</div>
+                <div class="chart-container"><canvas id="tvlTimelineChart"></canvas></div>
             </div>
             <div class="chart-card">
-                <div class="chart-title">Repartition TVL par Chain</div>
-                <div class="chart-container">
-                    <canvas id="tvlPieChart"></canvas>
-                </div>
+                <div class="chart-title">TVL by Chain</div>
+                <div class="chart-subtitle">Repartition de la TVL par blockchain</div>
+                <div class="chart-container"><canvas id="tvlByChainChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">TVL by Platform</div>
+                <div class="chart-subtitle">Repartition de la TVL par protocole</div>
+                <div class="chart-container"><canvas id="tvlByPlatformChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Revenue Section -->
+        <div class="section-title">Annualized Revenue</div>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">Annualized Revenue by Chain</div>
+                <div class="chart-subtitle">Revenu annualise par blockchain</div>
+                <div class="chart-container"><canvas id="revenueByChainChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Annualized Revenue by Platform</div>
+                <div class="chart-subtitle">Revenu annualise par protocole</div>
+                <div class="chart-container"><canvas id="revenueByPlatformChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div class="section-title">Users</div>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">Number of Users by Chain</div>
+                <div class="chart-subtitle">Investisseurs uniques par blockchain</div>
+                <div class="chart-container"><canvas id="usersByChainChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Number of Users by Platform</div>
+                <div class="chart-subtitle">Investisseurs uniques par protocole</div>
+                <div class="chart-container"><canvas id="usersByPlatformChart"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Vaults Section -->
+        <div class="section-title">Vaults</div>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">Number of Vaults by Chain</div>
+                <div class="chart-subtitle">Nombre de vaults par blockchain</div>
+                <div class="chart-container"><canvas id="vaultsByChainChart"></canvas></div>
             </div>
             <div class="chart-card">
                 <div class="chart-title">Top 10 Vaults par APY</div>
-                <div class="chart-container">
-                    <canvas id="apyBarChart"></canvas>
-                </div>
+                <div class="chart-subtitle">Rendements annuels les plus eleves</div>
+                <div class="chart-container"><canvas id="apyBarChart"></canvas></div>
             </div>
         </div>
 
         <!-- KPI Evolution -->
+        <div class="section-title" id="evolutionTitle" style="display:none">Suivi d'evolution (historique)</div>
         <div class="charts-grid" id="evolutionSection" style="display:none">
             <div class="chart-card full-width">
                 <div class="chart-title">Evolution TVL Total</div>
-                <div class="chart-container">
-                    <canvas id="evoTvlChart"></canvas>
-                </div>
+                <div class="chart-container"><canvas id="evoTvlChart"></canvas></div>
             </div>
             <div class="chart-card">
                 <div class="chart-title">Evolution Investisseurs</div>
-                <div class="chart-container">
-                    <canvas id="evoInvestorsChart"></canvas>
-                </div>
+                <div class="chart-container"><canvas id="evoInvestorsChart"></canvas></div>
             </div>
             <div class="chart-card">
                 <div class="chart-title">Evolution APY Moyen</div>
-                <div class="chart-container">
-                    <canvas id="evoApyChart"></canvas>
-                </div>
+                <div class="chart-container"><canvas id="evoApyChart"></canvas></div>
             </div>
         </div>
 
-        <!-- Vaults Table -->
+        <!-- Vaults Information Table -->
+        <div class="section-title">Vaults Information</div>
         <div class="table-card">
             <div class="table-header">
                 <div class="table-title">Tous les Vaults</div>
@@ -420,11 +309,13 @@
                         <th onclick="sortTable('name')">Vault</th>
                         <th onclick="sortTable('chain')">Chain</th>
                         <th onclick="sortTable('token')">Token</th>
-                        <th onclick="sortTable('tvl')">TVL</th>
+                        <th onclick="sortTable('platform')">Platform</th>
+                        <th onclick="sortTable('tvl')">Vault TVL</th>
                         <th onclick="sortTable('apy')">APY</th>
-                        <th onclick="sortTable('investors')">Investisseurs</th>
-                        <th onclick="sortTable('platform')">Plateforme</th>
-                        <th onclick="sortTable('status')">Statut</th>
+                        <th onclick="sortTable('dailyRevenue')">Daily Revenue</th>
+                        <th onclick="sortTable('annualRevenue')">Annual Revenue</th>
+                        <th onclick="sortTable('investors')">Users</th>
+                        <th onclick="sortTable('status')">Status</th>
                     </tr>
                 </thead>
                 <tbody id="vaultsTableBody"></tbody>
@@ -433,7 +324,6 @@
     </div>
 
     <script>
-        // API Endpoints
         const API = {
             vaults: 'https://staking-api.bim.finance/vaults',
             tvl: 'https://staking-api.bim.finance/tvl',
@@ -442,64 +332,43 @@
             tvlTimeline: 'https://vaults-timeline.bim.finance/api/v2/tvlByChains?bucket=1d_1Y'
         };
 
-        // Chain ID mapping
-        const CHAIN_NAMES = {
-            '1': 'Ethereum',
-            '10': 'Optimism',
-            '100': 'Gnosis',
-            '137': 'Polygon',
-            '8453': 'Base',
-            '9745': 'Plasma'
-        };
-
         const CHAIN_COLORS = {
-            polygon: '#8247e5',
-            base: '#3b82f6',
-            optimism: '#ef4444',
-            gnosis: '#10b981',
-            ethereum: '#94a3b8',
-            plasma: '#f59e0b'
+            polygon: '#8247e5', base: '#3b82f6', optimism: '#ef4444',
+            gnosis: '#10b981', ethereum: '#94a3b8', plasma: '#f59e0b'
         };
 
-        // State
-        let state = {
-            vaults: [],
-            tvl: {},
-            apy: {},
-            investors: null,
-            tvlTimeline: null,
-            sortKey: 'tvl',
-            sortDir: -1,
-            chainFilter: 'all'
+        const PLATFORM_COLORS = {
+            morpho: '#2563eb', compound: '#00d395', aerodrome: '#3b82f6',
+            aura: '#7c3aed', deuro: '#f59e0b', fluid: '#06b6d4'
         };
 
+        let state = { vaults: [], tvl: {}, apy: {}, investors: null, tvlTimeline: null,
+            sortKey: 'tvl', sortDir: -1, chainFilter: 'all' };
         let charts = {};
 
-        // Utility
+        // Utilities
         function formatUSD(val) {
+            if (!isFinite(val) || val == null) return '-';
             if (val >= 1e6) return '$' + (val / 1e6).toFixed(2) + 'M';
             if (val >= 1e3) return '$' + (val / 1e3).toFixed(2) + 'K';
             return '$' + val.toFixed(2);
         }
-
         function formatPercent(val) {
+            if (!isFinite(val) || val == null) return '-';
             return (val * 100).toFixed(2) + '%';
         }
-
         function formatNumber(val) {
             return new Intl.NumberFormat('fr-FR').format(val);
         }
-
+        function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
         function getChainClass(chain) {
-            const c = chain?.toLowerCase();
-            if (CHAIN_COLORS[c]) return 'chain-' + c;
-            return 'chain-default';
+            return CHAIN_COLORS[chain?.toLowerCase()] ? 'chain-' + chain.toLowerCase() : 'chain-default';
         }
+        function isValidApy(v) { return typeof v === 'number' && isFinite(v) && v > 0; }
 
-        // Fetch all data
+        // Data loading
         async function loadAllData() {
             document.getElementById('loading').classList.remove('hidden');
-
             try {
                 const [vaults, tvl, apy, investors, tvlTimeline] = await Promise.all([
                     fetch(API.vaults).then(r => r.json()),
@@ -508,254 +377,283 @@
                     fetch(API.investors).then(r => r.json()),
                     fetch(API.tvlTimeline).then(r => r.json())
                 ]);
-
-                state.vaults = vaults;
-                state.tvl = tvl;
-                state.apy = apy;
-                state.investors = investors;
-                state.tvlTimeline = tvlTimeline;
-
+                state = { ...state, vaults, tvl, apy, investors, tvlTimeline };
                 renderAll();
                 document.getElementById('lastUpdate').textContent =
                     'Mis a jour : ' + new Date().toLocaleTimeString('fr-FR');
             } catch (err) {
-                console.error('Erreur lors du chargement:', err);
+                console.error('Erreur:', err);
             } finally {
                 document.getElementById('loading').classList.add('hidden');
             }
         }
 
-        // Build enriched vault list
         function getEnrichedVaults() {
-            // Flatten TVL by chain into a simple map: vaultId -> tvl
             const tvlMap = {};
-            for (const [chainId, vaults] of Object.entries(state.tvl)) {
-                for (const [vaultId, tvl] of Object.entries(vaults)) {
-                    tvlMap[vaultId] = (tvlMap[vaultId] || 0) + tvl;
+            for (const [, vaultsObj] of Object.entries(state.tvl)) {
+                for (const [id, val] of Object.entries(vaultsObj)) {
+                    tvlMap[id] = (tvlMap[id] || 0) + val;
                 }
             }
-
-            // Investor count map
             const investorMap = {};
             if (state.investors?.items) {
                 for (const item of state.investors.items) {
                     investorMap[item.beefy_id] = item.investor_counts?.[0] || 0;
                 }
             }
+            return state.vaults.map(v => {
+                const tvl = tvlMap[v.id] || 0;
+                const apyData = state.apy[v.id];
+                const apy = apyData && isValidApy(apyData.totalApy) ? apyData.totalApy : 0;
+                const fee = apyData?.beefyPerformanceFee || 0;
+                const annualRevenue = (tvl > 0 && apy > 0 && fee > 0) ? tvl * apy * fee / (1 - fee) : 0;
+                return {
+                    id: v.id, name: v.name,
+                    chain: v.chain || v.network || 'unknown',
+                    token: v.token, platform: v.platformId,
+                    status: v.status, tvl, apy,
+                    investors: investorMap[v.id] || 0,
+                    fee,
+                    annualRevenue,
+                    dailyRevenue: annualRevenue / 365
+                };
+            });
+        }
 
-            return state.vaults.map(v => ({
-                id: v.id,
-                name: v.name,
-                chain: v.chain || v.network || 'unknown',
-                token: v.token,
-                platform: v.platformId,
-                status: v.status,
-                tvl: tvlMap[v.id] || 0,
-                apy: state.apy[v.id]?.totalApy || 0,
-                investors: investorMap[v.id] || 0,
-                assets: v.assets || [],
-                risks: v.risks || [],
-                strategyType: v.strategyTypeId || ''
-            }));
+        // Aggregate helpers
+        function groupBy(items, key, valueKey) {
+            const map = {};
+            for (const item of items) {
+                const k = item[key] || 'other';
+                map[k] = (map[k] || 0) + (item[valueKey] || 0);
+            }
+            return Object.entries(map).sort((a, b) => b[1] - a[1]);
+        }
+
+        function getColor(key, colorMap) {
+            return colorMap[key] || '#64748b';
         }
 
         // Render all
         function renderAll() {
             const enriched = getEnrichedVaults();
             renderKPIs(enriched);
+            renderSupported(enriched);
             renderTVLTimeline();
-            renderTVLPie(enriched);
+            renderPieChart('tvlByChainChart', enriched, 'chain', 'tvl', CHAIN_COLORS);
+            renderPieChart('tvlByPlatformChart', enriched, 'platform', 'tvl', PLATFORM_COLORS);
+            renderBarGroupChart('revenueByChainChart', enriched, 'chain', 'annualRevenue', CHAIN_COLORS, v => formatUSD(v));
+            renderBarGroupChart('revenueByPlatformChart', enriched, 'platform', 'annualRevenue', PLATFORM_COLORS, v => formatUSD(v));
+            renderBarGroupChart('usersByChainChart', enriched, 'chain', 'investors', CHAIN_COLORS, v => v.toString());
+            renderBarGroupChart('usersByPlatformChart', enriched, 'platform', 'investors', PLATFORM_COLORS, v => v.toString());
+            renderVaultsByChainChart(enriched);
             renderAPYBar(enriched);
             renderChainFilters(enriched);
             renderTable(enriched);
         }
 
-        // KPI Cards
+        // KPIs
         function renderKPIs(vaults) {
             const totalTVL = vaults.reduce((s, v) => s + v.tvl, 0);
             const activeVaults = vaults.filter(v => v.status === 'active').length;
             const totalInvestors = vaults.reduce((s, v) => s + v.investors, 0);
-            const avgAPY = vaults.filter(v => v.apy > 0);
-            const meanAPY = avgAPY.length > 0 ? avgAPY.reduce((s, v) => s + v.apy, 0) / avgAPY.length : 0;
+            const apyVaults = vaults.filter(v => v.apy > 0);
+            const meanAPY = apyVaults.length > 0 ? apyVaults.reduce((s, v) => s + v.apy, 0) / apyVaults.length : 0;
+            const totalAnnualRevenue = vaults.reduce((s, v) => s + v.annualRevenue, 0);
+            const totalDailyRevenue = totalAnnualRevenue / 365;
             const chains = [...new Set(vaults.map(v => v.chain))];
-            const topVault = vaults.reduce((best, v) => v.tvl > (best?.tvl || 0) ? v : best, null);
+            const platforms = [...new Set(vaults.map(v => v.platform))];
 
             document.getElementById('kpiGrid').innerHTML = `
                 <div class="kpi-card">
-                    <div class="kpi-label">TVL Total</div>
+                    <div class="kpi-label">TVL</div>
                     <div class="kpi-value">${formatUSD(totalTVL)}</div>
-                    <div class="kpi-sub">${chains.length} chains actives</div>
+                    <div class="kpi-sub">Total Value Locked</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Vaults Actifs</div>
+                    <div class="kpi-label">Annualized Revenue</div>
+                    <div class="kpi-value" style="color:var(--accent-cyan)">${formatUSD(totalAnnualRevenue)}</div>
+                    <div class="kpi-sub">${formatUSD(totalDailyRevenue)}/jour</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Total Vaults</div>
                     <div class="kpi-value">${activeVaults}</div>
-                    <div class="kpi-sub">${vaults.length} vaults au total</div>
+                    <div class="kpi-sub">${vaults.length} au total</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Investisseurs</div>
+                    <div class="kpi-label">Total Users</div>
                     <div class="kpi-value">${formatNumber(totalInvestors)}</div>
-                    <div class="kpi-sub">Tous vaults confondus</div>
+                    <div class="kpi-sub">Investisseurs uniques</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">APY Moyen</div>
-                    <div class="kpi-value" style="color: var(--accent-green)">${formatPercent(meanAPY)}</div>
-                    <div class="kpi-sub">Sur ${avgAPY.length} vaults avec rendement</div>
+                    <div class="kpi-label">Supported Chains</div>
+                    <div class="kpi-value">${chains.length}</div>
+                    <div class="kpi-sub">${chains.map(cap).join(', ')}</div>
                 </div>
                 <div class="kpi-card">
-                    <div class="kpi-label">Top Vault (TVL)</div>
-                    <div class="kpi-value" style="font-size:1.3rem">${topVault?.name || '-'}</div>
-                    <div class="kpi-sub">${topVault ? formatUSD(topVault.tvl) + ' sur ' + topVault.chain : ''}</div>
+                    <div class="kpi-label">Supported Platforms</div>
+                    <div class="kpi-value">${platforms.length}</div>
+                    <div class="kpi-sub">${platforms.map(cap).join(', ')}</div>
                 </div>
             `;
         }
 
-        // TVL Timeline Chart
+        // Supported Chains & Platforms tags
+        function renderSupported(vaults) {
+            const chains = [...new Set(vaults.map(v => v.chain))].sort();
+            const platforms = [...new Set(vaults.map(v => v.platform))].sort();
+            document.getElementById('supportedSection').innerHTML = `
+                <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:0.5rem">
+                    <div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Supported Chains</div>
+                        <div class="tag-row">${chains.map(c =>
+                            `<span class="tag"><span class="tag-dot" style="background:${getColor(c, CHAIN_COLORS)}"></span>${cap(c)}</span>`
+                        ).join('')}</div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em">Supported Platforms</div>
+                        <div class="tag-row">${platforms.map(p =>
+                            `<span class="tag"><span class="tag-dot" style="background:${getColor(p, PLATFORM_COLORS)}"></span>${cap(p)}</span>`
+                        ).join('')}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // TVL Timeline
         function renderTVLTimeline() {
             const data = state.tvlTimeline;
             if (!data?.data) return;
-
             const datasets = [];
-            const colorKeys = Object.keys(CHAIN_COLORS);
-
             for (const [chain, points] of Object.entries(data.data)) {
-                const color = CHAIN_COLORS[chain] || '#' + Math.floor(Math.random() * 16777215).toString(16);
+                const color = CHAIN_COLORS[chain] || '#64748b';
                 datasets.push({
-                    label: chain.charAt(0).toUpperCase() + chain.slice(1),
-                    data: points.map(p => ({
-                        x: new Date(p[0] * 1000),
-                        y: p[1]
-                    })),
-                    borderColor: color,
-                    backgroundColor: color + '20',
-                    fill: true,
-                    tension: 0.3,
-                    pointRadius: 0,
-                    borderWidth: 2
+                    label: cap(chain),
+                    data: points.map(p => ({ x: new Date(p[0] * 1000), y: p[1] })),
+                    borderColor: color, backgroundColor: color + '20',
+                    fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2
                 });
             }
-
             if (charts.tvlTimeline) charts.tvlTimeline.destroy();
             charts.tvlTimeline = new Chart(document.getElementById('tvlTimelineChart'), {
-                type: 'line',
-                data: { datasets },
+                type: 'line', data: { datasets },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: {
-                            labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle' }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: ctx => ctx.dataset.label + ': ' + formatUSD(ctx.parsed.y)
-                            }
-                        }
+                        legend: { labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle' } },
+                        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + formatUSD(ctx.parsed.y) } }
                     },
                     scales: {
-                        x: {
-                            type: 'time',
-                            time: { unit: 'month' },
-                            grid: { color: 'rgba(30,41,59,0.5)' },
-                            ticks: { color: '#64748b' }
-                        },
-                        y: {
-                            stacked: true,
-                            grid: { color: 'rgba(30,41,59,0.5)' },
-                            ticks: {
-                                color: '#64748b',
-                                callback: v => formatUSD(v)
-                            }
-                        }
+                        x: { type: 'time', time: { unit: 'month' }, grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b' } },
+                        y: { stacked: true, grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b', callback: v => formatUSD(v) } }
                     }
                 }
             });
         }
 
-        // TVL Pie Chart
-        function renderTVLPie(vaults) {
-            const byChain = {};
-            for (const v of vaults) {
-                byChain[v.chain] = (byChain[v.chain] || 0) + v.tvl;
-            }
+        // Generic Doughnut
+        function renderPieChart(canvasId, vaults, groupKey, valueKey, colorMap) {
+            const grouped = groupBy(vaults, groupKey, valueKey);
+            const labels = grouped.map(([k]) => cap(k));
+            const values = grouped.map(([, v]) => v);
+            const colors = grouped.map(([k]) => getColor(k, colorMap));
 
-            const entries = Object.entries(byChain).sort((a, b) => b[1] - a[1]);
-            const labels = entries.map(([c]) => c.charAt(0).toUpperCase() + c.slice(1));
-            const values = entries.map(([, v]) => v);
-            const colors = entries.map(([c]) => CHAIN_COLORS[c] || '#64748b');
-
-            if (charts.tvlPie) charts.tvlPie.destroy();
-            charts.tvlPie = new Chart(document.getElementById('tvlPieChart'), {
+            if (charts[canvasId]) charts[canvasId].destroy();
+            charts[canvasId] = new Chart(document.getElementById(canvasId), {
                 type: 'doughnut',
+                data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: '#111827', borderWidth: 2 }] },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle', padding: 12, font: { size: 11 } } },
+                        tooltip: { callbacks: {
+                            label: ctx => {
+                                const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                                const pct = ((ctx.parsed / total) * 100).toFixed(1);
+                                return ctx.label + ': ' + formatUSD(ctx.parsed) + ' (' + pct + '%)';
+                            }
+                        }}
+                    }
+                }
+            });
+        }
+
+        // Generic Bar chart (horizontal)
+        function renderBarGroupChart(canvasId, vaults, groupKey, valueKey, colorMap, formatter) {
+            const grouped = groupBy(vaults, groupKey, valueKey);
+            const labels = grouped.map(([k]) => cap(k));
+            const values = grouped.map(([, v]) => v);
+            const colors = grouped.map(([k]) => getColor(k, colorMap));
+
+            if (charts[canvasId]) charts[canvasId].destroy();
+            charts[canvasId] = new Chart(document.getElementById(canvasId), {
+                type: 'bar',
+                data: { labels, datasets: [{ data: values, backgroundColor: colors.map(c => c + 'cc'), borderColor: colors, borderWidth: 1, borderRadius: 4 }] },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: ctx => formatter(ctx.parsed.x) } }
+                    },
+                    scales: {
+                        x: { grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b', callback: v => formatter(v) } },
+                        y: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        // Vaults by Chain (bar)
+        function renderVaultsByChainChart(vaults) {
+            const byChain = {};
+            for (const v of vaults) { byChain[v.chain] = (byChain[v.chain] || 0) + 1; }
+            const entries = Object.entries(byChain).sort((a, b) => b[1] - a[1]);
+
+            if (charts.vaultsByChain) charts.vaultsByChain.destroy();
+            charts.vaultsByChain = new Chart(document.getElementById('vaultsByChainChart'), {
+                type: 'bar',
                 data: {
-                    labels,
+                    labels: entries.map(([k]) => cap(k)),
                     datasets: [{
-                        data: values,
-                        backgroundColor: colors,
-                        borderColor: '#111827',
-                        borderWidth: 2
+                        data: entries.map(([, v]) => v),
+                        backgroundColor: entries.map(([k]) => (CHAIN_COLORS[k] || '#64748b') + 'cc'),
+                        borderColor: entries.map(([k]) => CHAIN_COLORS[k] || '#64748b'),
+                        borderWidth: 1, borderRadius: 4
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle', padding: 15 }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: ctx => ctx.label + ': ' + formatUSD(ctx.parsed)
-                            }
-                        }
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b', stepSize: 1 } },
+                        y: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
                     }
                 }
             });
         }
 
-        // APY Bar Chart
+        // APY Bar
         function renderAPYBar(vaults) {
             const sorted = [...vaults].filter(v => v.apy > 0).sort((a, b) => b.apy - a.apy).slice(0, 10);
-            const labels = sorted.map(v => v.name + ' (' + v.chain + ')');
-            const values = sorted.map(v => v.apy * 100);
-            const colors = sorted.map(v => CHAIN_COLORS[v.chain] || '#64748b');
-
             if (charts.apyBar) charts.apyBar.destroy();
             charts.apyBar = new Chart(document.getElementById('apyBarChart'), {
                 type: 'bar',
                 data: {
-                    labels,
+                    labels: sorted.map(v => v.name + ' (' + v.chain + ')'),
                     datasets: [{
-                        label: 'APY (%)',
-                        data: values,
-                        backgroundColor: colors.map(c => c + 'aa'),
-                        borderColor: colors,
-                        borderWidth: 1,
-                        borderRadius: 4
+                        data: sorted.map(v => v.apy * 100),
+                        backgroundColor: sorted.map(v => (CHAIN_COLORS[v.chain] || '#64748b') + 'aa'),
+                        borderColor: sorted.map(v => CHAIN_COLORS[v.chain] || '#64748b'),
+                        borderWidth: 1, borderRadius: 4
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    indexAxis: 'y',
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: ctx => ctx.parsed.x.toFixed(2) + '%'
-                            }
-                        }
-                    },
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.x.toFixed(2) + '%' } } },
                     scales: {
-                        x: {
-                            grid: { color: 'rgba(30,41,59,0.5)' },
-                            ticks: { color: '#64748b', callback: v => v + '%' }
-                        },
-                        y: {
-                            grid: { display: false },
-                            ticks: { color: '#94a3b8', font: { size: 11 } }
-                        }
+                        x: { grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b', callback: v => v + '%' } },
+                        y: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
                     }
                 }
             });
@@ -764,19 +662,11 @@
         // Chain Filters
         function renderChainFilters(vaults) {
             const chains = [...new Set(vaults.map(v => v.chain))].sort();
-            const container = document.getElementById('chainFilters');
-            container.innerHTML = `
-                <button class="filter-btn ${state.chainFilter === 'all' ? 'active' : ''}"
-                        onclick="filterChain('all')">Tous</button>
-                ${chains.map(c => `
-                    <button class="filter-btn ${state.chainFilter === c ? 'active' : ''}"
-                            onclick="filterChain('${c}')">
-                        ${c.charAt(0).toUpperCase() + c.slice(1)}
-                    </button>
-                `).join('')}
+            document.getElementById('chainFilters').innerHTML = `
+                <button class="filter-btn ${state.chainFilter === 'all' ? 'active' : ''}" onclick="filterChain('all')">Tous</button>
+                ${chains.map(c => `<button class="filter-btn ${state.chainFilter === c ? 'active' : ''}" onclick="filterChain('${c}')">${cap(c)}</button>`).join('')}
             `;
         }
-
         function filterChain(chain) {
             state.chainFilter = chain;
             const enriched = getEnrichedVaults();
@@ -786,185 +676,117 @@
 
         // Sort
         function sortTable(key) {
-            if (state.sortKey === key) {
-                state.sortDir *= -1;
-            } else {
-                state.sortKey = key;
-                state.sortDir = key === 'name' || key === 'chain' || key === 'token' ? 1 : -1;
-            }
+            if (state.sortKey === key) { state.sortDir *= -1; }
+            else { state.sortKey = key; state.sortDir = ['name','chain','token','platform'].includes(key) ? 1 : -1; }
             renderTable(getEnrichedVaults());
         }
 
-        // Vaults Table
+        // Table
         function renderTable(vaults) {
-            let filtered = state.chainFilter === 'all'
-                ? vaults
-                : vaults.filter(v => v.chain === state.chainFilter);
-
+            let filtered = state.chainFilter === 'all' ? vaults : vaults.filter(v => v.chain === state.chainFilter);
             filtered.sort((a, b) => {
-                const va = a[state.sortKey];
-                const vb = b[state.sortKey];
+                const va = a[state.sortKey], vb = b[state.sortKey];
                 if (typeof va === 'string') return va.localeCompare(vb) * state.sortDir;
-                return (va - vb) * state.sortDir;
+                return ((va || 0) - (vb || 0)) * state.sortDir;
             });
-
-            const tbody = document.getElementById('vaultsTableBody');
-            tbody.innerHTML = filtered.map(v => `
+            document.getElementById('vaultsTableBody').innerHTML = filtered.map(v => `
                 <tr>
-                    <td><strong>${v.name}</strong><br><span style="color:var(--text-muted);font-size:0.75rem">${v.id}</span></td>
+                    <td><strong>${v.name}</strong><br><span style="color:var(--text-muted);font-size:0.7rem">${v.id}</span></td>
                     <td><span class="chain-badge ${getChainClass(v.chain)}">${v.chain}</span></td>
                     <td>${v.token}</td>
+                    <td>${cap(v.platform)}</td>
                     <td>${v.tvl > 0 ? formatUSD(v.tvl) : '-'}</td>
                     <td class="apy-value">${v.apy > 0 ? formatPercent(v.apy) : '-'}</td>
+                    <td class="revenue-value">${v.dailyRevenue > 0.001 ? formatUSD(v.dailyRevenue) : '-'}</td>
+                    <td class="revenue-value">${v.annualRevenue > 0.01 ? formatUSD(v.annualRevenue) : '-'}</td>
                     <td>${v.investors > 0 ? formatNumber(v.investors) : '-'}</td>
-                    <td>${v.platform}</td>
                     <td><span class="status-${v.status}">${v.status}</span></td>
                 </tr>
             `).join('');
         }
 
-        // KPI History
+        // KPI History / Evolution
         async function loadHistory() {
             try {
                 const res = await fetch('data/kpi-history.json');
                 if (!res.ok) return;
                 const history = await res.json();
                 if (history.length < 1) return;
-
+                document.getElementById('evolutionTitle').style.display = '';
                 document.getElementById('evolutionSection').style.display = '';
                 renderEvolutionCharts(history);
                 renderKPIChanges(history);
-            } catch (e) {
-                // Fichier historique non disponible, on ignore
-            }
+            } catch (e) {}
         }
 
         function renderEvolutionCharts(history) {
             const dates = history.map(h => h.date);
+            const evoOpts = (fmt) => ({
+                responsive: true, maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle' } },
+                    tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(ctx.parsed.y) } }
+                },
+                scales: {
+                    x: { grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b', maxRotation: 45 } },
+                    y: { grid: { color: 'rgba(30,41,59,0.5)' }, ticks: { color: '#64748b', callback: fmt } }
+                }
+            });
 
-            // TVL Evolution
+            const lineDS = (label, data, color) => ({
+                label, data, borderColor: color, backgroundColor: color + '18',
+                fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: color, borderWidth: 2
+            });
+
             if (charts.evoTvl) charts.evoTvl.destroy();
             charts.evoTvl = new Chart(document.getElementById('evoTvlChart'), {
                 type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [{
-                        label: 'TVL Total',
-                        data: history.map(h => h.kpis.totalTVL),
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59,130,246,0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#3b82f6',
-                        borderWidth: 2
-                    }]
-                },
-                options: evoChartOptions(v => formatUSD(v))
+                data: { labels: dates, datasets: [lineDS('TVL Total', history.map(h => h.kpis.totalTVL), '#3b82f6')] },
+                options: evoOpts(v => formatUSD(v))
             });
 
-            // Investors Evolution
             if (charts.evoInvestors) charts.evoInvestors.destroy();
             charts.evoInvestors = new Chart(document.getElementById('evoInvestorsChart'), {
                 type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [{
-                        label: 'Investisseurs',
-                        data: history.map(h => h.kpis.totalInvestors),
-                        borderColor: '#8b5cf6',
-                        backgroundColor: 'rgba(139,92,246,0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#8b5cf6',
-                        borderWidth: 2
-                    }]
-                },
-                options: evoChartOptions(v => formatNumber(v))
+                data: { labels: dates, datasets: [lineDS('Investisseurs', history.map(h => h.kpis.totalInvestors), '#8b5cf6')] },
+                options: evoOpts(v => formatNumber(v))
             });
 
-            // APY Evolution
             if (charts.evoApy) charts.evoApy.destroy();
             charts.evoApy = new Chart(document.getElementById('evoApyChart'), {
                 type: 'line',
                 data: {
                     labels: dates,
-                    datasets: [{
-                        label: 'APY Moyen',
-                        data: history.map(h => h.kpis.avgAPY ? h.kpis.avgAPY * 100 : null),
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16,185,129,0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#10b981',
-                        borderWidth: 2
-                    }, {
-                        label: 'APY Max',
-                        data: history.map(h => h.kpis.maxAPY ? h.kpis.maxAPY * 100 : null),
-                        borderColor: '#f59e0b',
-                        backgroundColor: 'transparent',
-                        borderDash: [5, 3],
-                        tension: 0.3,
-                        pointRadius: 3,
-                        pointBackgroundColor: '#f59e0b',
-                        borderWidth: 1.5
-                    }]
+                    datasets: [
+                        lineDS('APY Moyen', history.map(h => h.kpis.avgAPY ? h.kpis.avgAPY * 100 : null), '#10b981'),
+                        { ...lineDS('APY Max', history.map(h => h.kpis.maxAPY ? h.kpis.maxAPY * 100 : null), '#f59e0b'),
+                          borderDash: [5, 3], fill: false, borderWidth: 1.5 }
+                    ]
                 },
-                options: evoChartOptions(v => v.toFixed(2) + '%')
+                options: evoOpts(v => (v != null ? v.toFixed(2) + '%' : '-'))
             });
-        }
-
-        function evoChartOptions(tickFormatter) {
-            return {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: { mode: 'index', intersect: false },
-                plugins: {
-                    legend: {
-                        labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle' }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: ctx => ctx.dataset.label + ': ' + tickFormatter(ctx.parsed.y)
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: { color: 'rgba(30,41,59,0.5)' },
-                        ticks: { color: '#64748b' }
-                    },
-                    y: {
-                        grid: { color: 'rgba(30,41,59,0.5)' },
-                        ticks: { color: '#64748b', callback: tickFormatter }
-                    }
-                }
-            };
         }
 
         function renderKPIChanges(history) {
             if (history.length < 2) return;
             const latest = history[history.length - 1].kpis;
             const prev = history[history.length - 2].kpis;
-
-            const changes = [
-                { id: 'totalTVL', current: latest.totalTVL, previous: prev.totalTVL },
-                { id: 'totalInvestors', current: latest.totalInvestors, previous: prev.totalInvestors },
-                { id: 'avgAPY', current: latest.avgAPY, previous: prev.avgAPY }
+            const diffs = [
+                { idx: 0, cur: latest.totalTVL, prev: prev.totalTVL },
+                null,
+                null,
+                { idx: 3, cur: latest.totalInvestors, prev: prev.totalInvestors }
             ];
-
-            // Inject change badges into KPI cards after they render
             const cards = document.querySelectorAll('.kpi-card');
-            changes.forEach((c, i) => {
-                if (!c.previous || !c.current) return;
-                const diff = ((c.current - c.previous) / c.previous) * 100;
-                if (!isFinite(diff)) return;
+            diffs.forEach(d => {
+                if (!d || !d.prev || !d.cur) return;
+                const pct = ((d.cur - d.prev) / d.prev) * 100;
+                if (!isFinite(pct)) return;
                 const badge = document.createElement('div');
-                badge.className = `kpi-change ${diff >= 0 ? 'positive' : 'negative'}`;
-                badge.textContent = (diff >= 0 ? '+' : '') + diff.toFixed(1) + '% vs veille';
-                cards[i]?.appendChild(badge);
+                badge.className = `kpi-change ${pct >= 0 ? 'positive' : 'negative'}`;
+                badge.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '% vs veille';
+                cards[d.idx]?.appendChild(badge);
             });
         }
 
