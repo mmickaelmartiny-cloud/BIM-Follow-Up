@@ -328,8 +328,8 @@
             vaults: 'https://staking-api.bim.finance/vaults',
             tvl: 'https://staking-api.bim.finance/tvl',
             apy: 'https://staking-api.bim.finance/apy/breakdown',
-            investors: 'https://dashboard-api.bim.finance/api/v1/beefy/investor-counts',
-            tvlTimeline: 'https://vaults-timeline.bim.finance/api/v2/tvlByChains?bucket=1d_1Y'
+            investors: '/api/investor-counts',
+            tvlTimeline: '/api/tvl-timeline'
         };
 
         const CHAIN_COLORS = {
@@ -366,23 +366,47 @@
         }
         function isValidApy(v) { return typeof v === 'number' && isFinite(v) && v > 0; }
 
-        // Data loading
+        // Data loading - each API fetched independently to avoid one failure blocking all
+        async function safeFetch(url) {
+            try {
+                const r = await fetch(url);
+                if (!r.ok) throw new Error(r.status);
+                return await r.json();
+            } catch (e) {
+                console.warn('API failed:', url, e.message);
+                return null;
+            }
+        }
+
         async function loadAllData() {
             document.getElementById('loading').classList.remove('hidden');
             try {
                 const [vaults, tvl, apy, investors, tvlTimeline] = await Promise.all([
-                    fetch(API.vaults).then(r => r.json()),
-                    fetch(API.tvl).then(r => r.json()),
-                    fetch(API.apy).then(r => r.json()),
-                    fetch(API.investors).then(r => r.json()),
-                    fetch(API.tvlTimeline).then(r => r.json())
+                    safeFetch(API.vaults),
+                    safeFetch(API.tvl),
+                    safeFetch(API.apy),
+                    safeFetch(API.investors),
+                    safeFetch(API.tvlTimeline)
                 ]);
-                state = { ...state, vaults, tvl, apy, investors, tvlTimeline };
+                state.vaults = vaults || [];
+                state.tvl = tvl || {};
+                state.apy = apy || {};
+                state.investors = investors || { items: [] };
+                state.tvlTimeline = tvlTimeline || { data: {} };
+
+                if (state.vaults.length === 0) {
+                    document.getElementById('loading').querySelector('.loading-text').textContent =
+                        'Erreur: impossible de charger les donnees. Verifiez la console (F12).';
+                    return;
+                }
+
                 renderAll();
                 document.getElementById('lastUpdate').textContent =
                     'Mis a jour : ' + new Date().toLocaleTimeString('fr-FR');
             } catch (err) {
                 console.error('Erreur:', err);
+                document.getElementById('loading').querySelector('.loading-text').textContent =
+                    'Erreur: ' + err.message;
             } finally {
                 document.getElementById('loading').classList.add('hidden');
             }
