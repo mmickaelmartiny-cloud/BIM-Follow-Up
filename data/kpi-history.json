@@ -1,0 +1,932 @@
+[
+  {
+    "date": "2026-01-13",
+    "timestamp": 1768262400000,
+    "kpis": {
+      "totalTVL": 733214.0566937209,
+      "activeVaults": 18,
+      "totalVaults": 18,
+      "totalInvestors": 147,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-01-25",
+    "timestamp": 1769299200000,
+    "kpis": {
+      "totalTVL": 802284.7841826961,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 152,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-01-26",
+    "timestamp": 1769385600000,
+    "kpis": {
+      "totalTVL": 793680.6188904801,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 154,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-01-29",
+    "timestamp": 1769644800000,
+    "kpis": {
+      "totalTVL": 618204.3690984023,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 160,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-01-30",
+    "timestamp": 1769731200000,
+    "kpis": {
+      "totalTVL": 609847.1447338519,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 160,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-02",
+    "timestamp": 1769990400000,
+    "kpis": {
+      "totalTVL": 529377.7806413373,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 161,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-03",
+    "timestamp": 1770076800000,
+    "kpis": {
+      "totalTVL": 529495.6771065744,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 162,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-04",
+    "timestamp": 1770163200000,
+    "kpis": {
+      "totalTVL": 529533.7014784765,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-05",
+    "timestamp": 1770249600000,
+    "kpis": {
+      "totalTVL": 528518.9408945752,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-07",
+    "timestamp": 1770422400000,
+    "kpis": {
+      "totalTVL": 526232.3129475381,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-08",
+    "timestamp": 1770508800000,
+    "kpis": {
+      "totalTVL": 526750.6079517656,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-09",
+    "timestamp": 1770595200000,
+    "kpis": {
+      "totalTVL": 524227.0898105892,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-10",
+    "timestamp": 1770681600000,
+    "kpis": {
+      "totalTVL": 523110.29734884494,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-11",
+    "timestamp": 1770768000000,
+    "kpis": {
+      "totalTVL": 525829.4142957164,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-12",
+    "timestamp": 1770854400000,
+    "kpis": {
+      "totalTVL": 525951.1551284541,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-13",
+    "timestamp": 1770940800000,
+    "kpis": {
+      "totalTVL": 525647.0684490732,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-14",
+    "timestamp": 1771027200000,
+    "kpis": {
+      "totalTVL": 526555.8812366494,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-15",
+    "timestamp": 1771113600000,
+    "kpis": {
+      "totalTVL": 526571.9988833602,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-16",
+    "timestamp": 1771200000000,
+    "kpis": {
+      "totalTVL": 524941.6989927376,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 166,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-18",
+    "timestamp": 1771372800000,
+    "kpis": {
+      "totalTVL": 524615.0343449994,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 167,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-19",
+    "timestamp": 1771459200000,
+    "kpis": {
+      "totalTVL": 524240.87579855684,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 167,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-20",
+    "timestamp": 1771545600000,
+    "kpis": {
+      "totalTVL": 524453.4965392589,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 167,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-21",
+    "timestamp": 1771632000000,
+    "kpis": {
+      "totalTVL": 524380.7841893652,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 167,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-24",
+    "timestamp": 1771891200000,
+    "kpis": {
+      "totalTVL": 527599.8798492332,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 170,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-25",
+    "timestamp": 1771977600000,
+    "kpis": {
+      "totalTVL": 528062.0702309245,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 170,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-26",
+    "timestamp": 1772064000000,
+    "kpis": {
+      "totalTVL": 528928.3602371352,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 170,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-27",
+    "timestamp": 1772150400000,
+    "kpis": {
+      "totalTVL": 528770.8842958116,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 170,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-02-28",
+    "timestamp": 1772236800000,
+    "kpis": {
+      "totalTVL": 528042.555568647,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 170,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-01",
+    "timestamp": 1772323200000,
+    "kpis": {
+      "totalTVL": 648514.2719622969,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 170,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-02",
+    "timestamp": 1772409600000,
+    "kpis": {
+      "totalTVL": 646278.4072751007,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 172,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-04",
+    "timestamp": 1772582400000,
+    "kpis": {
+      "totalTVL": 655136.668625111,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 184,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-05",
+    "timestamp": 1772668800000,
+    "kpis": {
+      "totalTVL": 655580.245386481,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 184,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-06",
+    "timestamp": 1772755200000,
+    "kpis": {
+      "totalTVL": 654746.4951943522,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 186,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-08",
+    "timestamp": 1772928000000,
+    "kpis": {
+      "totalTVL": 649136.3033550894,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 186,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-09",
+    "timestamp": 1773014400000,
+    "kpis": {
+      "totalTVL": 650521.2099435729,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 186,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-11",
+    "timestamp": 1773187200000,
+    "kpis": {
+      "totalTVL": 512633.9550651691,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 187,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-12",
+    "timestamp": 1773273600000,
+    "kpis": {
+      "totalTVL": 360152.2074280296,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 187,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-13",
+    "timestamp": 1773360000000,
+    "kpis": {
+      "totalTVL": 327359.1782521482,
+      "activeVaults": 20,
+      "totalVaults": 20,
+      "totalInvestors": 188,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-15",
+    "timestamp": 1773532800000,
+    "kpis": {
+      "totalTVL": 328165.1414488439,
+      "activeVaults": 21,
+      "totalVaults": 21,
+      "totalInvestors": 188,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-16",
+    "timestamp": 1773619200000,
+    "kpis": {
+      "totalTVL": 336226.2503533499,
+      "activeVaults": 22,
+      "totalVaults": 22,
+      "totalInvestors": 195,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-17",
+    "timestamp": 1773705600000,
+    "kpis": {
+      "totalTVL": 295280.78761323827,
+      "activeVaults": 22,
+      "totalVaults": 22,
+      "totalInvestors": 200,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-18",
+    "timestamp": 1773792000000,
+    "kpis": {
+      "totalTVL": 295471.5441180773,
+      "activeVaults": 22,
+      "totalVaults": 22,
+      "totalInvestors": 200,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-19",
+    "timestamp": 1773878400000,
+    "kpis": {
+      "totalTVL": 285287.9862488923,
+      "activeVaults": 22,
+      "totalVaults": 22,
+      "totalInvestors": 200,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-20",
+    "timestamp": 1773964800000,
+    "kpis": {
+      "totalTVL": 282292.0373630526,
+      "activeVaults": 22,
+      "totalVaults": 22,
+      "totalInvestors": 200,
+      "avgAPY": null,
+      "maxAPY": null,
+      "topVault": null
+    },
+    "tvlByChain": {},
+    "vaults": [],
+    "source": "excel"
+  },
+  {
+    "date": "2026-03-21",
+    "timestamp": 1774122392715,
+    "kpis": {
+      "totalTVL": 287825.9370272313,
+      "activeVaults": 22,
+      "totalVaults": 22,
+      "totalInvestors": 202,
+      "avgAPY": 0.03360533357075885,
+      "maxAPY": 0.10087816503869318,
+      "topVault": {
+        "id": "compound-op-eth",
+        "name": "WETH",
+        "chain": "optimism",
+        "tvl": 131777.72856267908
+      }
+    },
+    "tvlByChain": {
+      "1": 11.052858157421705,
+      "10": 131800.95984324164,
+      "100": 0.00010358215437121373,
+      "137": 16758.982070794216,
+      "8453": 139254.85099686973,
+      "9745": 0.091154586148
+    },
+    "vaults": [
+      {
+        "id": "compound-base-usds",
+        "name": "USDS",
+        "chain": "base",
+        "token": "USDS",
+        "tvl": 9813.277681421325,
+        "apy": 0.018685384984655995,
+        "status": "active"
+      },
+      {
+        "id": "compound-op-usdc",
+        "name": "USDC",
+        "chain": "optimism",
+        "token": "USDC",
+        "tvl": 18.828802596496,
+        "apy": 0.03570647734099608,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-usdt",
+        "name": "Compound USDT",
+        "chain": "polygon",
+        "token": "USDT",
+        "tvl": 8322.438972487358,
+        "apy": 0.011406167895271022,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-bold-usdc",
+        "name": "BOLD-USDC sLP",
+        "chain": "base",
+        "token": "sAMM-Bold/USDC",
+        "tvl": 23670.526520391413,
+        "apy": 0.05061321619688153,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-msusd-usdc",
+        "name": "msUSD-USDC sLP",
+        "chain": "base",
+        "token": "sAMM-msUSD/USDC",
+        "tvl": 59973.125239944915,
+        "apy": 0.10087816503869318,
+        "status": "active"
+      },
+      {
+        "id": "morpho-seamless-usdc",
+        "name": "Seamless USDC",
+        "chain": "base",
+        "token": "USDC",
+        "tvl": 5871.822224023538,
+        "apy": 0.03129872257707644,
+        "status": "active"
+      },
+      {
+        "id": "compound-base-aero",
+        "name": "AERO",
+        "chain": "base",
+        "token": "AERO",
+        "tvl": 30.16377258045687,
+        "apy": 0.013891909862592033,
+        "status": "active"
+      },
+      {
+        "id": "compound-op-usdt",
+        "name": "USDT",
+        "chain": "optimism",
+        "token": "USDT",
+        "tvl": 4.402477966071,
+        "apy": 0.02796040363753316,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-usdc",
+        "name": "Compound USDC",
+        "chain": "polygon",
+        "token": "USDC",
+        "tvl": 8004.802394479684,
+        "apy": 0.007937655175258403,
+        "status": "active"
+      },
+      {
+        "id": "fluid-USDT0-plasma",
+        "name": "USDT0",
+        "chain": "plasma",
+        "token": "USDT0",
+        "tvl": 0.091154586148,
+        "apy": 0.04417236189081852,
+        "status": "active"
+      },
+      {
+        "id": "morpho-seamless-weth",
+        "name": "Seamless WETH",
+        "chain": "base",
+        "token": "WETH",
+        "tvl": 1865.7923653051269,
+        "apy": 0.014469783757818488,
+        "status": "active"
+      },
+      {
+        "id": "compound-base-usdc",
+        "name": "USDC",
+        "chain": "base",
+        "token": "USDC",
+        "tvl": 6.217238650896,
+        "apy": 0.0285178324242239,
+        "status": "active"
+      },
+      {
+        "id": "morpho-seamless-cbbtc",
+        "name": "Seamless cbBTC",
+        "chain": "base",
+        "token": "cbBTC",
+        "tvl": 843.8406113,
+        "apy": 0.0005667057666958186,
+        "status": "active"
+      },
+      {
+        "id": "deuro",
+        "name": "DEURO",
+        "chain": "ethereum",
+        "token": "DEURO",
+        "tvl": 11.052858157421705,
+        "apy": 0.10066164400576749,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-jeur-eurc",
+        "name": "jEUR-EURC sLP",
+        "chain": "base",
+        "token": "sAMM-jEUR/EURC",
+        "tvl": 8510.67324030684,
+        "apy": 0.02983246274560769,
+        "status": "active"
+      },
+      {
+        "id": "aura-gnosis-sdai-eure",
+        "name": "sDAI-EURe",
+        "chain": "gnosis",
+        "token": "sDAI-EURe Gnosis",
+        "tvl": 2.3400349058001302e-7,
+        "apy": "Infinity",
+        "status": "active"
+      },
+      {
+        "id": "aura-gnosis-steur-eure",
+        "name": "stEUR-EURe",
+        "chain": "gnosis",
+        "token": "stEUR-EURe Gnosis",
+        "tvl": 0.00010334815088063371,
+        "apy": 0.005604814899186961,
+        "status": "active"
+      },
+      {
+        "id": "compound-op-eth",
+        "name": "WETH",
+        "chain": "optimism",
+        "token": "WETH",
+        "tvl": 131777.72856267908,
+        "apy": 0.018335249124912467,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-weth",
+        "name": "Compound WETH",
+        "chain": "polygon",
+        "token": "WETH",
+        "tvl": 212.45919092671943,
+        "apy": 0.040634146700679684,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-pol",
+        "name": "Compound POL",
+        "chain": "polygon",
+        "token": "POL",
+        "tvl": 219.28151290045446,
+        "apy": 0.037003074079522004,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-weth-cbbtc",
+        "name": "WETH-cbBTC vLP",
+        "chain": "base",
+        "token": "vAMM-WETH/cbBTC",
+        "tvl": 0.20996451458155949,
+        "apy": 0.008145336931117964,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-weth-mseth",
+        "name": "msETH-​WETH sLP",
+        "chain": "base",
+        "token": "sAMM-msETH/WETH",
+        "tvl": 28669.20213843067,
+        "apy": 0.07939048995062703,
+        "status": "active"
+      }
+    ]
+  }
+]

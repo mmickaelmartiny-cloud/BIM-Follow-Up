@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIM Exchange | Dashboard Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2332;
+            --border: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-cyan: #06b6d4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #111827 0%, #1a1f3a 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .header h1 span {
+            color: var(--accent-blue);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .last-update {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .refresh-btn {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .refresh-btn:hover { opacity: 0.85; }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: background 0.2s;
+        }
+
+        .kpi-card:hover { background: var(--bg-card-hover); }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .kpi-sub {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.35rem;
+        }
+
+        .kpi-change {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.35rem;
+            font-weight: 600;
+        }
+
+        .kpi-change.positive {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+        }
+
+        .kpi-change.negative {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+        }
+
+        /* Charts Section */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .chart-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .chart-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* Vaults Table */
+        .table-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            overflow-x: auto;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .table-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        th:hover { color: var(--text-secondary); }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        tr:hover td { background: rgba(59, 130, 246, 0.04); }
+
+        .chain-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .chain-polygon { background: rgba(130, 71, 229, 0.2); color: #a78bfa; }
+        .chain-base { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .chain-optimism { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+        .chain-gnosis { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .chain-ethereum { background: rgba(148, 163, 184, 0.2); color: #94a3b8; }
+        .chain-default { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+
+        .status-active {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .status-paused {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        .apy-value {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .risk-tag {
+            display: inline-block;
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            margin-right: 0.2rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+        }
+
+        /* Loading */
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: opacity 0.3s;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loading-text {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .charts-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 1rem; align-items: flex-start; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text">Chargement des donnees BIM Exchange...</div>
+    </div>
+
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">BIM</div>
+            <h1>BIM Exchange <span>Analytics</span></h1>
+        </div>
+        <div class="header-right">
+            <span class="last-update" id="lastUpdate"></span>
+            <button class="refresh-btn" onclick="loadAllData()">Actualiser</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- KPI Cards -->
+        <div class="kpi-grid" id="kpiGrid"></div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-card full-width">
+                <div class="chart-title">TVL par Chain (historique 1 an)</div>
+                <div class="chart-container">
+                    <canvas id="tvlTimelineChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Repartition TVL par Chain</div>
+                <div class="chart-container">
+                    <canvas id="tvlPieChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Top 10 Vaults par APY</div>
+                <div class="chart-container">
+                    <canvas id="apyBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPI Evolution -->
+        <div class="charts-grid" id="evolutionSection" style="display:none">
+            <div class="chart-card full-width">
+                <div class="chart-title">Evolution TVL Total</div>
+                <div class="chart-container">
+                    <canvas id="evoTvlChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Evolution Investisseurs</div>
+                <div class="chart-container">
+                    <canvas id="evoInvestorsChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Evolution APY Moyen</div>
+                <div class="chart-container">
+                    <canvas id="evoApyChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaults Table -->
+        <div class="table-card">
+            <div class="table-header">
+                <div class="table-title">Tous les Vaults</div>
+                <div class="filter-group" id="chainFilters"></div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th onclick="sortTable('name')">Vault</th>
+                        <th onclick="sortTable('chain')">Chain</th>
+                        <th onclick="sortTable('token')">Token</th>
+                        <th onclick="sortTable('tvl')">TVL</th>
+                        <th onclick="sortTable('apy')">APY</th>
+                        <th onclick="sortTable('investors')">Investisseurs</th>
+                        <th onclick="sortTable('platform')">Plateforme</th>
+                        <th onclick="sortTable('status')">Statut</th>
+                    </tr>
+                </thead>
+                <tbody id="vaultsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // API Endpoints
+        const API = {
+            vaults: 'https://staking-api.bim.finance/vaults',
+            tvl: 'https://staking-api.bim.finance/tvl',
+            apy: 'https://staking-api.bim.finance/apy/breakdown',
+            investors: 'https://dashboard-api.bim.finance/api/v1/beefy/investor-counts',
+            tvlTimeline: 'https://vaults-timeline.bim.finance/api/v2/tvlByChains?bucket=1d_1Y'
+        };
+
+        // Chain ID mapping
+        const CHAIN_NAMES = {
+            '1': 'Ethereum',
+            '10': 'Optimism',
+            '100': 'Gnosis',
+            '137': 'Polygon',
+            '8453': 'Base',
+            '9745': 'Plasma'
+        };
+
+        const CHAIN_COLORS = {
+            polygon: '#8247e5',
+            base: '#3b82f6',
+            optimism: '#ef4444',
+            gnosis: '#10b981',
+            ethereum: '#94a3b8',
+            plasma: '#f59e0b'
+        };
+
+        // State
+        let state = {
+            vaults: [],
+            tvl: {},
+            apy: {},
+            investors: null,
+            tvlTimeline: null,
+            sortKey: 'tvl',
+            sortDir: -1,
+            chainFilter: 'all'
+        };
+
+        let charts = {};
+
+        // Utility
+        function formatUSD(val) {
+            if (val >= 1e6) return '$' + (val / 1e6).toFixed(2) + 'M';
+            if (val >= 1e3) return '$' + (val / 1e3).toFixed(2) + 'K';
+            return '$' + val.toFixed(2);
+        }
+
+        function formatPercent(val) {
+            return (val * 100).toFixed(2) + '%';
+        }
+
+        function formatNumber(val) {
+            return new Intl.NumberFormat('fr-FR').format(val);
+        }
+
+        function getChainClass(chain) {
+            const c = chain?.toLowerCase();
+            if (CHAIN_COLORS[c]) return 'chain-' + c;
+            return 'chain-default';
+        }
+
+        // Fetch all data
+        async function loadAllData() {
+            document.getElementById('loading').classList.remove('hidden');
+
+            try {
+                const [vaults, tvl, apy, investors, tvlTimeline] = await Promise.all([
+                    fetch(API.vaults).then(r => r.json()),
+                    fetch(API.tvl).then(r => r.json()),
+                    fetch(API.apy).then(r => r.json()),
+                    fetch(API.investors).then(r => r.json()),
+                    fetch(API.tvlTimeline).then(r => r.json())
+                ]);
+
+                state.vaults = vaults;
+                state.tvl = tvl;
+                state.apy = apy;
+                state.investors = investors;
+                state.tvlTimeline = tvlTimeline;
+
+                renderAll();
+                document.getElementById('lastUpdate').textContent =
+                    'Mis a jour : ' + new Date().toLocaleTimeString('fr-FR');
+            } catch (err) {
+                console.error('Erreur lors du chargement:', err);
+            } finally {
+                document.getElementById('loading').classList.add('hidden');
+            }
+        }
+
+        // Build enriched vault list
+        function getEnrichedVaults() {
+            // Flatten TVL by chain into a simple map: vaultId -> tvl
+            const tvlMap = {};
+            for (const [chainId, vaults] of Object.entries(state.tvl)) {
+                for (const [vaultId, tvl] of Object.entries(vaults)) {
+                    tvlMap[vaultId] = (tvlMap[vaultId] || 0) + tvl;
+                }
+            }
+
+            // Investor count map
+            const investorMap = {};
+            if (state.investors?.items) {
+                for (const item of state.investors.items) {
+                    investorMap[item.beefy_id] = item.investor_counts?.[0] || 0;
+                }
+            }
+
+            return state.vaults.map(v => ({
+                id: v.id,
+                name: v.name,
+                chain: v.chain || v.network || 'unknown',
+                token: v.token,
+                platform: v.platformId,
+                status: v.status,
+                tvl: tvlMap[v.id] || 0,
+                apy: state.apy[v.id]?.totalApy || 0,
+                investors: investorMap[v.id] || 0,
+                assets: v.assets || [],
+                risks: v.risks || [],
+                strategyType: v.strategyTypeId || ''
+            }));
+        }
+
+        // Render all
+        function renderAll() {
+            const enriched = getEnrichedVaults();
+            renderKPIs(enriched);
+            renderTVLTimeline();
+            renderTVLPie(enriched);
+            renderAPYBar(enriched);
+            renderChainFilters(enriched);
+            renderTable(enriched);
+        }
+
+        // KPI Cards
+        function renderKPIs(vaults) {
+            const totalTVL = vaults.reduce((s, v) => s + v.tvl, 0);
+            const activeVaults = vaults.filter(v => v.status === 'active').length;
+            const totalInvestors = vaults.reduce((s, v) => s + v.investors, 0);
+            const avgAPY = vaults.filter(v => v.apy > 0);
+            const meanAPY = avgAPY.length > 0 ? avgAPY.reduce((s, v) => s + v.apy, 0) / avgAPY.length : 0;
+            const chains = [...new Set(vaults.map(v => v.chain))];
+            const topVault = vaults.reduce((best, v) => v.tvl > (best?.tvl || 0) ? v : best, null);
+
+            document.getElementById('kpiGrid').innerHTML = `
+                <div class="kpi-card">
+                    <div class="kpi-label">TVL Total</div>
+                    <div class="kpi-value">${formatUSD(totalTVL)}</div>
+                    <div class="kpi-sub">${chains.length} chains actives</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Vaults Actifs</div>
+                    <div class="kpi-value">${activeVaults}</div>
+                    <div class="kpi-sub">${vaults.length} vaults au total</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Investisseurs</div>
+                    <div class="kpi-value">${formatNumber(totalInvestors)}</div>
+                    <div class="kpi-sub">Tous vaults confondus</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">APY Moyen</div>
+                    <div class="kpi-value" style="color: var(--accent-green)">${formatPercent(meanAPY)}</div>
+                    <div class="kpi-sub">Sur ${avgAPY.length} vaults avec rendement</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Top Vault (TVL)</div>
+                    <div class="kpi-value" style="font-size:1.3rem">${topVault?.name || '-'}</div>
+                    <div class="kpi-sub">${topVault ? formatUSD(topVault.tvl) + ' sur ' + topVault.chain : ''}</div>
+                </div>
+            `;
+        }
+
+        // TVL Timeline Chart
+        function renderTVLTimeline() {
+            const data = state.tvlTimeline;
+            if (!data?.data) return;
+
+            const datasets = [];
+            const colorKeys = Object.keys(CHAIN_COLORS);
+
+            for (const [chain, points] of Object.entries(data.data)) {
+                const color = CHAIN_COLORS[chain] || '#' + Math.floor(Math.random() * 16777215).toString(16);
+                datasets.push({
+                    label: chain.charAt(0).toUpperCase() + chain.slice(1),
+                    data: points.map(p => ({
+                        x: new Date(p[0] * 1000),
+                        y: p[1]
+                    })),
+                    borderColor: color,
+                    backgroundColor: color + '20',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    borderWidth: 2
+                });
+            }
+
+            if (charts.tvlTimeline) charts.tvlTimeline.destroy();
+            charts.tvlTimeline = new Chart(document.getElementById('tvlTimelineChart'), {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle' }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ctx.dataset.label + ': ' + formatUSD(ctx.parsed.y)
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'month' },
+                            grid: { color: 'rgba(30,41,59,0.5)' },
+                            ticks: { color: '#64748b' }
+                        },
+                        y: {
+                            stacked: true,
+                            grid: { color: 'rgba(30,41,59,0.5)' },
+                            ticks: {
+                                color: '#64748b',
+                                callback: v => formatUSD(v)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // TVL Pie Chart
+        function renderTVLPie(vaults) {
+            const byChain = {};
+            for (const v of vaults) {
+                byChain[v.chain] = (byChain[v.chain] || 0) + v.tvl;
+            }
+
+            const entries = Object.entries(byChain).sort((a, b) => b[1] - a[1]);
+            const labels = entries.map(([c]) => c.charAt(0).toUpperCase() + c.slice(1));
+            const values = entries.map(([, v]) => v);
+            const colors = entries.map(([c]) => CHAIN_COLORS[c] || '#64748b');
+
+            if (charts.tvlPie) charts.tvlPie.destroy();
+            charts.tvlPie = new Chart(document.getElementById('tvlPieChart'), {
+                type: 'doughnut',
+                data: {
+                    labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: colors,
+                        borderColor: '#111827',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle', padding: 15 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ctx.label + ': ' + formatUSD(ctx.parsed)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // APY Bar Chart
+        function renderAPYBar(vaults) {
+            const sorted = [...vaults].filter(v => v.apy > 0).sort((a, b) => b.apy - a.apy).slice(0, 10);
+            const labels = sorted.map(v => v.name + ' (' + v.chain + ')');
+            const values = sorted.map(v => v.apy * 100);
+            const colors = sorted.map(v => CHAIN_COLORS[v.chain] || '#64748b');
+
+            if (charts.apyBar) charts.apyBar.destroy();
+            charts.apyBar = new Chart(document.getElementById('apyBarChart'), {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'APY (%)',
+                        data: values,
+                        backgroundColor: colors.map(c => c + 'aa'),
+                        borderColor: colors,
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ctx.parsed.x.toFixed(2) + '%'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(30,41,59,0.5)' },
+                            ticks: { color: '#64748b', callback: v => v + '%' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8', font: { size: 11 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chain Filters
+        function renderChainFilters(vaults) {
+            const chains = [...new Set(vaults.map(v => v.chain))].sort();
+            const container = document.getElementById('chainFilters');
+            container.innerHTML = `
+                <button class="filter-btn ${state.chainFilter === 'all' ? 'active' : ''}"
+                        onclick="filterChain('all')">Tous</button>
+                ${chains.map(c => `
+                    <button class="filter-btn ${state.chainFilter === c ? 'active' : ''}"
+                            onclick="filterChain('${c}')">
+                        ${c.charAt(0).toUpperCase() + c.slice(1)}
+                    </button>
+                `).join('')}
+            `;
+        }
+
+        function filterChain(chain) {
+            state.chainFilter = chain;
+            const enriched = getEnrichedVaults();
+            renderChainFilters(enriched);
+            renderTable(enriched);
+        }
+
+        // Sort
+        function sortTable(key) {
+            if (state.sortKey === key) {
+                state.sortDir *= -1;
+            } else {
+                state.sortKey = key;
+                state.sortDir = key === 'name' || key === 'chain' || key === 'token' ? 1 : -1;
+            }
+            renderTable(getEnrichedVaults());
+        }
+
+        // Vaults Table
+        function renderTable(vaults) {
+            let filtered = state.chainFilter === 'all'
+                ? vaults
+                : vaults.filter(v => v.chain === state.chainFilter);
+
+            filtered.sort((a, b) => {
+                const va = a[state.sortKey];
+                const vb = b[state.sortKey];
+                if (typeof va === 'string') return va.localeCompare(vb) * state.sortDir;
+                return (va - vb) * state.sortDir;
+            });
+
+            const tbody = document.getElementById('vaultsTableBody');
+            tbody.innerHTML = filtered.map(v => `
+                <tr>
+                    <td><strong>${v.name}</strong><br><span style="color:var(--text-muted);font-size:0.75rem">${v.id}</span></td>
+                    <td><span class="chain-badge ${getChainClass(v.chain)}">${v.chain}</span></td>
+                    <td>${v.token}</td>
+                    <td>${v.tvl > 0 ? formatUSD(v.tvl) : '-'}</td>
+                    <td class="apy-value">${v.apy > 0 ? formatPercent(v.apy) : '-'}</td>
+                    <td>${v.investors > 0 ? formatNumber(v.investors) : '-'}</td>
+                    <td>${v.platform}</td>
+                    <td><span class="status-${v.status}">${v.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // KPI History
+        async function loadHistory() {
+            try {
+                const res = await fetch('data/kpi-history.json');
+                if (!res.ok) return;
+                const history = await res.json();
+                if (history.length < 1) return;
+
+                document.getElementById('evolutionSection').style.display = '';
+                renderEvolutionCharts(history);
+                renderKPIChanges(history);
+            } catch (e) {
+                // Fichier historique non disponible, on ignore
+            }
+        }
+
+        function renderEvolutionCharts(history) {
+            const dates = history.map(h => h.date);
+
+            // TVL Evolution
+            if (charts.evoTvl) charts.evoTvl.destroy();
+            charts.evoTvl = new Chart(document.getElementById('evoTvlChart'), {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'TVL Total',
+                        data: history.map(h => h.kpis.totalTVL),
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59,130,246,0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#3b82f6',
+                        borderWidth: 2
+                    }]
+                },
+                options: evoChartOptions(v => formatUSD(v))
+            });
+
+            // Investors Evolution
+            if (charts.evoInvestors) charts.evoInvestors.destroy();
+            charts.evoInvestors = new Chart(document.getElementById('evoInvestorsChart'), {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Investisseurs',
+                        data: history.map(h => h.kpis.totalInvestors),
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139,92,246,0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#8b5cf6',
+                        borderWidth: 2
+                    }]
+                },
+                options: evoChartOptions(v => formatNumber(v))
+            });
+
+            // APY Evolution
+            if (charts.evoApy) charts.evoApy.destroy();
+            charts.evoApy = new Chart(document.getElementById('evoApyChart'), {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'APY Moyen',
+                        data: history.map(h => h.kpis.avgAPY ? h.kpis.avgAPY * 100 : null),
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16,185,129,0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#10b981',
+                        borderWidth: 2
+                    }, {
+                        label: 'APY Max',
+                        data: history.map(h => h.kpis.maxAPY ? h.kpis.maxAPY * 100 : null),
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'transparent',
+                        borderDash: [5, 3],
+                        tension: 0.3,
+                        pointRadius: 3,
+                        pointBackgroundColor: '#f59e0b',
+                        borderWidth: 1.5
+                    }]
+                },
+                options: evoChartOptions(v => v.toFixed(2) + '%')
+            });
+        }
+
+        function evoChartOptions(tickFormatter) {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: {
+                        labels: { color: '#94a3b8', usePointStyle: true, pointStyle: 'circle' }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => ctx.dataset.label + ': ' + tickFormatter(ctx.parsed.y)
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(30,41,59,0.5)' },
+                        ticks: { color: '#64748b' }
+                    },
+                    y: {
+                        grid: { color: 'rgba(30,41,59,0.5)' },
+                        ticks: { color: '#64748b', callback: tickFormatter }
+                    }
+                }
+            };
+        }
+
+        function renderKPIChanges(history) {
+            if (history.length < 2) return;
+            const latest = history[history.length - 1].kpis;
+            const prev = history[history.length - 2].kpis;
+
+            const changes = [
+                { id: 'totalTVL', current: latest.totalTVL, previous: prev.totalTVL },
+                { id: 'totalInvestors', current: latest.totalInvestors, previous: prev.totalInvestors },
+                { id: 'avgAPY', current: latest.avgAPY, previous: prev.avgAPY }
+            ];
+
+            // Inject change badges into KPI cards after they render
+            const cards = document.querySelectorAll('.kpi-card');
+            changes.forEach((c, i) => {
+                if (!c.previous || !c.current) return;
+                const diff = ((c.current - c.previous) / c.previous) * 100;
+                if (!isFinite(diff)) return;
+                const badge = document.createElement('div');
+                badge.className = `kpi-change ${diff >= 0 ? 'positive' : 'negative'}`;
+                badge.textContent = (diff >= 0 ? '+' : '') + diff.toFixed(1) + '% vs veille';
+                cards[i]?.appendChild(badge);
+            });
+        }
+
+        // Init
+        loadAllData().then(() => loadHistory());
+    </script>
+</body>
+</html>
