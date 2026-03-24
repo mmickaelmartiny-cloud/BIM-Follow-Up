@@ -294,6 +294,16 @@
                 <div class="chart-title">Evolution APY Moyen</div>
                 <div class="chart-container"><canvas id="evoApyChart"></canvas></div>
             </div>
+            <div class="chart-card full-width">
+                <div class="chart-title">Evolution Users par Chain (historique)</div>
+                <div class="chart-subtitle">Nombre d'investisseurs uniques par blockchain au fil du temps</div>
+                <div class="chart-container"><canvas id="evoUsersByChainChart"></canvas></div>
+            </div>
+            <div class="chart-card full-width">
+                <div class="chart-title">Evolution Users par Platform (historique)</div>
+                <div class="chart-subtitle">Nombre d'investisseurs uniques par protocole au fil du temps</div>
+                <div class="chart-container"><canvas id="evoUsersByPlatformChart"></canvas></div>
+            </div>
         </div>
 
         <!-- Vaults Information Table -->
@@ -771,10 +781,21 @@
             });
 
             if (charts.evoInvestors) charts.evoInvestors.destroy();
+            const investorData = history.map(h => h.kpis.totalInvestors);
+            const minInv = Math.min(...investorData.filter(v => v > 0));
             charts.evoInvestors = new Chart(document.getElementById('evoInvestorsChart'), {
                 type: 'line',
-                data: { labels: dates, datasets: [lineDS('Investisseurs', history.map(h => h.kpis.totalInvestors), '#8b5cf6')] },
-                options: evoOpts(v => formatNumber(v))
+                data: { labels: dates, datasets: [lineDS('Investisseurs', investorData, '#8b5cf6')] },
+                options: {
+                    ...evoOpts(v => formatNumber(v)),
+                    scales: {
+                        ...evoOpts(v => formatNumber(v)).scales,
+                        y: {
+                            ...evoOpts(v => formatNumber(v)).scales.y,
+                            min: Math.max(0, minInv - 10)
+                        }
+                    }
+                }
             });
 
             if (charts.evoApy) charts.evoApy.destroy();
@@ -790,6 +811,38 @@
                 },
                 options: evoOpts(v => (v != null ? v.toFixed(2) + '%' : '-'))
             });
+
+            // Users by Chain evolution
+            const chainEntries = history.filter(h => h.usersByChain && Object.keys(h.usersByChain).length > 0);
+            if (chainEntries.length > 0) {
+                const chainDates = chainEntries.map(h => h.date);
+                const allChains = [...new Set(chainEntries.flatMap(h => Object.keys(h.usersByChain)))];
+                const chainDatasets = allChains.map(chain => {
+                    const color = CHAIN_COLORS[chain] || '#64748b';
+                    return lineDS(cap(chain), chainEntries.map(h => h.usersByChain[chain] || 0), color);
+                });
+                if (charts.evoUsersByChain) charts.evoUsersByChain.destroy();
+                charts.evoUsersByChain = new Chart(document.getElementById('evoUsersByChainChart'), {
+                    type: 'line', data: { labels: chainDates, datasets: chainDatasets },
+                    options: evoOpts(v => formatNumber(v))
+                });
+            }
+
+            // Users by Platform evolution
+            const platEntries = history.filter(h => h.usersByPlatform && Object.keys(h.usersByPlatform).length > 0);
+            if (platEntries.length > 0) {
+                const platDates = platEntries.map(h => h.date);
+                const allPlats = [...new Set(platEntries.flatMap(h => Object.keys(h.usersByPlatform)))];
+                const platDatasets = allPlats.map(plat => {
+                    const color = PLATFORM_COLORS[plat] || '#64748b';
+                    return lineDS(cap(plat), platEntries.map(h => h.usersByPlatform[plat] || 0), color);
+                });
+                if (charts.evoUsersByPlatform) charts.evoUsersByPlatform.destroy();
+                charts.evoUsersByPlatform = new Chart(document.getElementById('evoUsersByPlatformChart'), {
+                    type: 'line', data: { labels: platDates, datasets: platDatasets },
+                    options: evoOpts(v => formatNumber(v))
+                });
+            }
         }
 
         function renderKPIChanges(history) {
@@ -797,19 +850,21 @@
             const latest = history[history.length - 1].kpis;
             const prev = history[history.length - 2].kpis;
             const diffs = [
-                { idx: 0, cur: latest.totalTVL, prev: prev.totalTVL },
+                { idx: 0, cur: latest.totalTVL, prev: prev.totalTVL, fmt: v => formatUSD(Math.abs(v)) },
+                { idx: 1, cur: latest.totalAnnualRevenue, prev: prev.totalAnnualRevenue, fmt: v => formatUSD(Math.abs(v)) },
                 null,
-                null,
-                { idx: 3, cur: latest.totalInvestors, prev: prev.totalInvestors }
+                { idx: 3, cur: latest.totalInvestors, prev: prev.totalInvestors, fmt: v => Math.abs(v).toString() }
             ];
             const cards = document.querySelectorAll('.kpi-card');
             diffs.forEach(d => {
                 if (!d || !d.prev || !d.cur) return;
                 const pct = ((d.cur - d.prev) / d.prev) * 100;
+                const abs = d.cur - d.prev;
                 if (!isFinite(pct)) return;
                 const badge = document.createElement('div');
                 badge.className = `kpi-change ${pct >= 0 ? 'positive' : 'negative'}`;
-                badge.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '% vs veille';
+                const sign = pct >= 0 ? '+' : '';
+                badge.textContent = sign + pct.toFixed(1) + '% (' + sign + d.fmt(abs) + ') vs veille';
                 cards[d.idx]?.appendChild(badge);
             });
         }
