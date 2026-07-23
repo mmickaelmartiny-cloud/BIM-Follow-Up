@@ -37304,5 +37304,317 @@
         "status": "active"
       }
     ]
+  },
+  {
+    "date": "2026-07-23",
+    "timestamp": 1784801889311,
+    "kpis": {
+      "totalTVL": 265572.7772704887,
+      "activeVaults": 23,
+      "totalVaults": 23,
+      "totalInvestors": 219,
+      "avgAPY": 0.030959754260850438,
+      "maxAPY": 0.10066164400576749,
+      "totalAnnualRevenue": 1812.5018627251197,
+      "topVault": {
+        "id": "aerodrome-msusd-usdc",
+        "name": "msUSD-USDC sLP",
+        "chain": "base",
+        "tvl": 168767.53092674827
+      }
+    },
+    "tvlByChain": {
+      "1": 10.862291637466157,
+      "10": 1545.9442260797148,
+      "100": 0.00010502837561545786,
+      "137": 15452.979581518506,
+      "8453": 248562.99106622464,
+      "9745": 0
+    },
+    "revenueByChain": {
+      "base": 1784.4165619628209,
+      "optimism": 1.8589375149178857,
+      "polygon": 26.180804238947182,
+      "ethereum": 0.04555900557906015,
+      "gnosis": 2.8546318863881986e-9
+    },
+    "revenueByPlatform": {
+      "compound": 1.8705891016792007,
+      "morpho": 26.18082954801452,
+      "aerodrome": 1784.404885066992,
+      "deuro": 0.04555900557906015,
+      "aura": 2.8546318863881986e-9
+    },
+    "usersByChain": {
+      "polygon": 77,
+      "gnosis": 7,
+      "base": 112,
+      "optimism": 16,
+      "ethereum": 2,
+      "plasma": 5
+    },
+    "usersByPlatform": {
+      "morpho": 111,
+      "aura": 7,
+      "compound": 44,
+      "aerodrome": 50,
+      "deuro": 2,
+      "fluid": 5
+    },
+    "vaults": [
+      {
+        "id": "compound-base-usds",
+        "name": "USDS",
+        "chain": "base",
+        "token": "USDS",
+        "platform": "compound",
+        "tvl": 2.823418136503687,
+        "apy": 0.01268853006686399,
+        "annualRevenue": 0.0035431344312879683,
+        "status": "active"
+      },
+      {
+        "id": "compound-op-usdc",
+        "name": "USDC",
+        "chain": "optimism",
+        "token": "USDC",
+        "platform": "compound",
+        "tvl": 19.097884389808,
+        "apy": 0.04330361765548796,
+        "annualRevenue": 0.08179194893191889,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-usdt",
+        "name": "Compound USDT",
+        "chain": "polygon",
+        "token": "USDT",
+        "platform": "morpho",
+        "tvl": 7855.722673028226,
+        "apy": 0.013862951926352002,
+        "annualRevenue": 10.770676394137293,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-bold-usdc",
+        "name": "BOLD-USDC sLP",
+        "chain": "base",
+        "token": "sAMM-Bold/USDC",
+        "platform": "aerodrome",
+        "tvl": 540.0185734190803,
+        "apy": 0.0046539303433104084,
+        "annualRevenue": 0.24855911453930019,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-msusd-usdc",
+        "name": "msUSD-USDC sLP",
+        "chain": "base",
+        "token": "sAMM-msUSD/USDC",
+        "platform": "aerodrome",
+        "tvl": 168767.53092674827,
+        "apy": 0.09452292190511158,
+        "annualRevenue": 1577.709904540305,
+        "status": "active"
+      },
+      {
+        "id": "morpho-seamless-usdc",
+        "name": "Seamless USDC",
+        "chain": "base",
+        "token": "USDC",
+        "platform": "morpho",
+        "tvl": 5883.411137304954,
+        "apy": 0,
+        "annualRevenue": 0,
+        "status": "active"
+      },
+      {
+        "id": "compound-base-aero",
+        "name": "AERO",
+        "chain": "base",
+        "token": "AERO",
+        "platform": "compound",
+        "tvl": 0.20271963378186536,
+        "apy": 0.023932423883088028,
+        "annualRevenue": 0.0004798258224816237,
+        "status": "active"
+      },
+      {
+        "id": "compound-op-usdt",
+        "name": "USDT",
+        "chain": "optimism",
+        "token": "USDT",
+        "platform": "compound",
+        "tvl": 4.457729548692,
+        "apy": 0.03237135540105607,
+        "annualRevenue": 0.014271700302444856,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-usdc",
+        "name": "Compound USDC",
+        "chain": "polygon",
+        "token": "USDC",
+        "platform": "morpho",
+        "tvl": 7269.879752781832,
+        "apy": 0.019783715148349514,
+        "annualRevenue": 14.224473315671473,
+        "status": "active"
+      },
+      {
+        "id": "fluid-USDT0-plasma",
+        "name": "USDT0",
+        "chain": "plasma",
+        "token": "USDT0",
+        "platform": "fluid",
+        "tvl": 0,
+        "apy": 0.04769394327493659,
+        "annualRevenue": 0,
+        "status": "active"
+      },
+      {
+        "id": "morpho-seamless-weth",
+        "name": "Seamless WETH",
+        "chain": "base",
+        "token": "WETH",
+        "platform": "morpho",
+        "tvl": 1671.4248167025512,
+        "apy": 3.513217361472698e-8,
+        "annualRevenue": 0.000005807550347244123,
+        "status": "active"
+      },
+      {
+        "id": "compound-base-usdc",
+        "name": "USDC",
+        "chain": "base",
+        "token": "USDC",
+        "platform": "compound",
+        "tvl": 1.541743689912,
+        "apy": 0.05003029410638393,
+        "annualRevenue": 0.007628626507545391,
+        "status": "active"
+      },
+      {
+        "id": "morpho-seamless-cbbtc",
+        "name": "Seamless cbBTC",
+        "chain": "base",
+        "token": "cbBTC",
+        "platform": "morpho",
+        "tvl": 0.7251231,
+        "apy": 0.00027192900775907525,
+        "annualRevenue": 0.000019501516986545738,
+        "status": "active"
+      },
+      {
+        "id": "deuro",
+        "name": "DEURO",
+        "chain": "ethereum",
+        "token": "DEURO",
+        "platform": "deuro",
+        "tvl": 10.862291637466157,
+        "apy": 0.10066164400576749,
+        "annualRevenue": 0.04555900557906015,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-jeur-eurc",
+        "name": "jEUR-EURC sLP",
+        "chain": "base",
+        "token": "sAMM-jEUR/EURC",
+        "platform": "aerodrome",
+        "tvl": 5092.520565985814,
+        "apy": 0.0495854427419109,
+        "annualRevenue": 24.973999806925704,
+        "status": "active"
+      },
+      {
+        "id": "aura-gnosis-sdai-eure",
+        "name": "sDAI-EURe",
+        "chain": "gnosis",
+        "token": "sDAI-EURe Gnosis",
+        "platform": "aura",
+        "tvl": 2.3715322858858592e-7,
+        "apy": 0.02650899286673142,
+        "annualRevenue": 6.217608703823555e-10,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-tbtc-cbbtc",
+        "name": "tBTC-cbBTC sLP",
+        "chain": "base",
+        "token": "sAMM-tBTC/cbBTC",
+        "platform": "aerodrome",
+        "tvl": 1184.5217646141255,
+        "apy": 0.01025338875638937,
+        "annualRevenue": 1.20118966249381,
+        "status": "active"
+      },
+      {
+        "id": "aura-gnosis-steur-eure",
+        "name": "stEUR-EURe",
+        "chain": "gnosis",
+        "token": "stEUR-EURe Gnosis",
+        "platform": "aura",
+        "tvl": 0.00010479122238686928,
+        "apy": 0.00021544559196251534,
+        "annualRevenue": 2.232871016005843e-9,
+        "status": "active"
+      },
+      {
+        "id": "compound-op-eth",
+        "name": "WETH",
+        "chain": "optimism",
+        "token": "WETH",
+        "platform": "compound",
+        "tvl": 1522.3886121412147,
+        "apy": 0.011708320325471977,
+        "annualRevenue": 1.762873865683522,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-weth",
+        "name": "Compound WETH",
+        "chain": "polygon",
+        "token": "WETH",
+        "platform": "morpho",
+        "tvl": 190.9160634964919,
+        "apy": 0.000032596647330497654,
+        "annualRevenue": 0.0006154836519087734,
+        "status": "active"
+      },
+      {
+        "id": "morpho-compound-pol",
+        "name": "Compound POL",
+        "chain": "polygon",
+        "token": "POL",
+        "platform": "morpho",
+        "tvl": 136.4610922119551,
+        "apy": 0.08780569806160053,
+        "annualRevenue": 1.18503904548651,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-weth-cbbtc",
+        "name": "WETH-cbBTC vLP",
+        "chain": "base",
+        "token": "vAMM-WETH/cbBTC",
+        "platform": "aerodrome",
+        "tvl": 1.712489604931861,
+        "apy": 0.023364403203234074,
+        "annualRevenue": 0.003957161302184343,
+        "status": "active"
+      },
+      {
+        "id": "aerodrome-weth-mseth",
+        "name": "msETH-​WETH sLP",
+        "chain": "base",
+        "token": "sAMM-msETH/WETH",
+        "platform": "aerodrome",
+        "tvl": 65416.55778728468,
+        "apy": 0.027863013687438043,
+        "annualRevenue": 180.2672747814258,
+        "status": "active"
+      }
+    ]
   }
 ]
